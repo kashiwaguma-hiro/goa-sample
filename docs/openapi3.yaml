@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: Admin Service
+  description: Service for admin
+  version: "1.0"
+servers:
+- url: http://localhost:8000
+paths:
+  /openapi.json:
+    get:
+      tags:
+      - admin
+      summary: Download ./gen/http/openapi.json
+      operationId: admin#/openapi.json
+      responses:
+        "200":
+          description: File downloaded
+  /users/:
+    post:
+      tags:
+      - admin
+      summary: users admin
+      operationId: admin#users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsersRequestBody'
+            example:
+              email: tom@example.com
+              first-name: fn
+              last-name: ln
+              tel: 000-0000-0000
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponseBody'
+              example:
+                email: tom@example.com
+                first-name: fn
+                last-name: ln
+                tel: 000-0000-0000
+components:
+  schemas:
+    UsersRequestBody:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Email
+          example: tom@example.com
+          minLength: 1
+          maxLength: 128
+        first-name:
+          type: string
+          description: first-name
+          example: fn
+          format: regexp
+          pattern: ^[0-9a-zA-Z\.\-_~]*$
+          minLength: 1
+          maxLength: 128
+        last-name:
+          type: string
+          description: last-name
+          example: ln
+          format: regexp
+          pattern: ^[0-9a-zA-Z\.\-_~]*$
+          minLength: 1
+          maxLength: 128
+        tel:
+          type: string
+          description: tel
+          example: 000-0000-0000
+          minLength: 1
+          maxLength: 128
+      example:
+        email: tom@example.com
+        first-name: fn
+        last-name: ln
+        tel: 000-0000-0000
+      required:
+      - first-name
+      - last-name
+      - email
+      - tel
+    UsersResponseBody:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Email
+          example: tom@example.com
+          minLength: 1
+          maxLength: 128
+        first-name:
+          type: string
+          description: first-name
+          example: fn
+          format: regexp
+          pattern: ^[0-9a-zA-Z\.\-_~]*$
+          minLength: 1
+          maxLength: 128
+        last-name:
+          type: string
+          description: last-name
+          example: ln
+          format: regexp
+          pattern: ^[0-9a-zA-Z\.\-_~]*$
+          minLength: 1
+          maxLength: 128
+        tel:
+          type: string
+          description: tel
+          example: 000-0000-0000
+          minLength: 1
+          maxLength: 128
+      example:
+        email: tom@example.com
+        first-name: fn
+        last-name: ln
+        tel: 000-0000-0000
+tags:
+- name: admin
+  description: The admin service performs operations on users.
