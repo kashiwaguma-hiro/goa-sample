@@ -17,7 +17,7 @@ var _ = API("admin", func() {
 var _ = Service("admin", func() {
 	Description("The admin service performs operations on users.")
 
-	Method("users", func() {
+	Method("RegisterUser", func() {
 		Payload(func() {
 			users_request()
 			Required("first-name", "last-name", "email", "tel")
@@ -31,6 +31,21 @@ var _ = Service("admin", func() {
 			POST("/users/")
 		})
 
+	})
+
+	Method("GetUser", func() {
+		Payload(func() {
+			Field(1, "id", Int, "User ID")
+			Required("id")
+		})
+
+		Result(func(){
+			users_response()
+		})
+
+		HTTP(func() {
+			GET("/users/{id}")
+		})
 	})
 
 	Files("/openapi.json", "./gen/http/openapi.json")
@@ -58,11 +73,11 @@ func users_request(){
 		Format(FormatEmail)
 	})
 	Field(4, "tel", String, "tel", func() {
-		Example("000-0000-0000")
+		Example("012-3456-7890")
 		MinLength(1)
 		MaxLength(128)
 		Format(FormatRegexp)
-		Pattern("^[1-9]\\d{3}\\.\\d{4}\\.\\d{4}") // FIXME tekitou
+		Pattern("^\\d{3}-\\d{4}-\\d{4}$") // FIXME tekitou
 	})
 }
 

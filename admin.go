@@ -18,9 +18,16 @@ func NewAdmin(logger *log.Logger) admin.Service {
 	return &adminsrvc{logger}
 }
 
-// Users implements users.
-func (s *adminsrvc) Users(ctx context.Context, p *admin.UsersPayload) (res *admin.UsersResult, err error) {
-	res = &admin.UsersResult{}
-	s.logger.Print("admin.users")
+// RegisterUser implements RegisterUser.
+func (s *adminsrvc) RegisterUser(ctx context.Context, p *admin.RegisterUserPayload) (res *admin.RegisterUserResult, err error) {
+	res = &admin.RegisterUserResult{}
+	s.logger.Print("admin.RegisterUser")
+	return
+}
+
+// GetUser implements GetUser.
+func (s *adminsrvc) GetUser(ctx context.Context, p *admin.GetUserPayload) (res *admin.GetUserResult, err error) {
+	res = &admin.GetUserResult{}
+	s.logger.Print("admin.GetUser")
 	return
 }
