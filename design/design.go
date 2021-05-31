@@ -43,7 +43,6 @@ func users_request(){
 		MaxLength(128)
 		Format(FormatRegexp)
 		Pattern("^[0-9a-zA-Z\\.\\-_~]*$") // URIに含まれるので、利用できる記号はRFC3986のみ
-		//TODO Fromat
 	})
 	Field(2, "last-name", String, "last-name", func() {
 		Example("ln")
@@ -51,52 +50,25 @@ func users_request(){
 		MaxLength(128)
 		Format(FormatRegexp)
 		Pattern("^[0-9a-zA-Z\\.\\-_~]*$") // URIに含まれるので、利用できる記号はRFC3986のみ
-		//TODO Fromat
 	})
 	Field(3, "email", String, "Email", func() {
 		Example("tom@example.com")
 		MinLength(1)
-		MaxLength(128)
-		//TODO Fromat
+		MaxLength(256)
+		Format(FormatEmail)
 	})
 	Field(4, "tel", String, "tel", func() {
 		Example("000-0000-0000")
 		MinLength(1)
 		MaxLength(128)
-		//TODO Fromat
+		Format(FormatRegexp)
+		Pattern("^[1-9]\\d{3}\\.\\d{4}\\.\\d{4}") // FIXME tekitou
 	})
 }
 
 func users_response(){
-	Field(1, "id", Int, "id", func() {
+	users_request()
+	Field(5, "id", Int, "id", func() {
 		Example(101)
-	})
-	Field(2, "first-name", String, "first-name", func() {
-		Example("fn")
-		MinLength(1)
-		MaxLength(128)
-		Format(FormatRegexp)
-		Pattern("^[0-9a-zA-Z\\.\\-_~]*$") // URIに含まれるので、利用できる記号はRFC3986のみ
-		//TODO Fromat
-	})
-	Field(3, "last-name", String, "last-name", func() {
-		Example("ln")
-		MinLength(1)
-		MaxLength(128)
-		Format(FormatRegexp)
-		Pattern("^[0-9a-zA-Z\\.\\-_~]*$") // URIに含まれるので、利用できる記号はRFC3986のみ
-		//TODO Fromat
-	})
-	Field(4, "email", String, "Email", func() {
-		Example("tom@example.com")
-		MinLength(1)
-		MaxLength(128)
-		//TODO Fromat
-	})
-	Field(5, "tel", String, "tel", func() {
-		Example("000-0000-0000")
-		MinLength(1)
-		MaxLength(128)
-		//TODO Fromat
 	})
 }

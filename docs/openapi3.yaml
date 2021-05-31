@@ -54,8 +54,9 @@ components:
           type: string
           description: Email
           example: tom@example.com
+          format: email
           minLength: 1
-          maxLength: 128
+          maxLength: 256
         first-name:
           type: string
           description: first-name
@@ -76,6 +77,8 @@ components:
           type: string
           description: tel
           example: 000-0000-0000
+          format: regexp
+          pattern: ^[1-9]\d{3}\.\d{4}\.\d{4}
           minLength: 1
           maxLength: 128
       example:
@@ -95,8 +98,9 @@ components:
           type: string
           description: Email
           example: tom@example.com
+          format: email
           minLength: 1
-          maxLength: 128
+          maxLength: 256
         first-name:
           type: string
           description: first-name
@@ -122,6 +126,8 @@ components:
           type: string
           description: tel
           example: 000-0000-0000
+          format: regexp
+          pattern: ^[1-9]\d{3}\.\d{4}\.\d{4}
           minLength: 1
           maxLength: 128
       example:
