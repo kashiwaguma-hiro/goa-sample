@@ -42,6 +42,7 @@ paths:
               example:
                 email: tom@example.com
                 first-name: fn
+                id: 101
                 last-name: ln
                 tel: 000-0000-0000
 components:
@@ -104,6 +105,11 @@ components:
           pattern: ^[0-9a-zA-Z\.\-_~]*$
           minLength: 1
           maxLength: 128
+        id:
+          type: integer
+          description: id
+          example: 101
+          format: int64
         last-name:
           type: string
           description: last-name
@@ -121,6 +127,7 @@ components:
       example:
         email: tom@example.com
         first-name: fn
+        id: 101
         last-name: ln
         tel: 000-0000-0000
 tags:
