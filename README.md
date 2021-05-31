@@ -13,11 +13,8 @@ go mod init github.com/kashiwaguma-hiro/goa-sample
 go get -u goa.design/goa/v3
 go get -u goa.design/goa/v3/...
 
-# create go code from design
-goa gen github.com/kashiwaguma-hiro/goa-sample/design
-
-# move the oas3.0 docs
-cp ./gen/http/openapi3.yaml ./docs/
+# create go code from design,move the oas3.0 docs
+make gen
 ```
 
 
