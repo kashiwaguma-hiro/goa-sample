@@ -1,12 +1,15 @@
 # goa-sample
 
+goa という Golang製の Design Firstなフレームワークを用いたAPIサンプルを示す.
+
 
 ## How to create.
 
+公式ドキュメント通りにやってみる。
 https://goa.design/learn/getting-started/
 
 
-logs 
+作業ログ
 
 ```bash
 go mod init github.com/kashiwaguma-hiro/goa-sample
@@ -22,6 +25,9 @@ cp ./gen/http/openapi3.yaml ./docs/
 
 
 ## How to running
+
+生成したコードを起動して動かしてみる。
+
 ```bash
 # create the sample code from design
 goa example github.com/kashiwaguma-hiro/goa-sample/design
@@ -43,3 +49,5 @@ Content-Length: 3
 
 {}
 ```
+
+レスポンスは空だが、 [生成されたコード](https://github.com/kashiwaguma-hiro/goa-sample/blob/main/admin.go#L21-L26)が何も返却してないので想定通りの挙動。
